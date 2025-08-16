@@ -4,55 +4,29 @@ class Item extends StatefulWidget {
   const Item({super.key});
 
   @override
-  State<Item> createState() => _ItemState();
+  State<Item> createState() => _MyWidgetState();
 }
 
-class _ItemState extends State<Item> {
-  int quantity = 10;
+class _MyWidgetState extends State<Item> {
+ List data = ["สมชาย", "สมหญิง" "สมศรี",  "สมปอง", "สมจิตร" ];
 
-  void incrementQuantity() {
-    setState(() {
-      quantity++;
-    });
-  }
-
-  void decrementQuantity() {
-    setState(() {
-      //if (quantity > 0) {
-        //quantity--;
-      //}
-      quantity = quantity > 0 ? quantity - 1 : 0;
-
-    });
-  }
-  
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Quantity: $quantity',
-            style: const TextStyle(fontSize: 24),
+    return ListView.builder(
+      itemCount: data.length, 
+      itemBuilder: (context, index) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: Colors.pinkAccent,
           ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: incrementQuantity,
-                child: const Text('Increment'),
-              ),
-              const SizedBox(width: 20),
-              ElevatedButton(
-                onPressed: decrementQuantity,
-                child: const Text('Decrement'),
-              ),
-            ],
+          margin: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+          padding: EdgeInsets.all(40),
+          child: Text(
+            data[index],
+            style: TextStyle(fontSize: 20, color: Colors.white),
           ),
-        ],
-      ),
-    );
+        );
+    });
   }
 }
