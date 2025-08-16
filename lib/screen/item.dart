@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:learn_flutter_67_1/model/person.dart';
+import 'package:learn_flutter_67_1/model/person.dart';
 
 class Item extends StatefulWidget {
   const Item({super.key});
@@ -10,6 +11,8 @@ class Item extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<Item> {
+ List data = ["สมชาย", "สมหญิง", "สมศรี",  "สมปอง", "สมจิตร" ];
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -18,7 +21,7 @@ class _MyWidgetState extends State<Item> {
         return Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: Colors.pinkAccent,
+            color: personList[index].job.color,
           ),
           margin: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
           padding: EdgeInsets.all(40),
@@ -27,30 +30,17 @@ class _MyWidgetState extends State<Item> {
             children: [
               Text(
                 personList[index].name,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    "${personList[index].age} ปี",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Text(
-                    "${personList[index].job}",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
+              Text(
+                "${personList[index].age}ปี",
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
+              Text(
+                personList[index].job.title,
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+               Image.asset(personList[index].job.image, width: 50, height: 50),
             ],
           ),
         );
