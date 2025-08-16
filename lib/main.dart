@@ -15,7 +15,7 @@ void main() {
             backgroundColor:Colors.pinkAccent,
               centerTitle: true,
             ),
-            body: Home(),
+            body: home(),
             ),
             ),
             );
